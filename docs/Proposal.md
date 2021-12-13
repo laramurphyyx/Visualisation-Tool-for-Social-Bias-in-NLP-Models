@@ -9,6 +9,12 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Supervisor: Jennifer Foster
 
+
+## 0    Executive Summary
+
+This project aims to highlight the presence of social biases that have been trained into language models through visualisation. Social bias is a huge issue we face as a society, and this can be a difficult behaviour/opinion to correct, as large language models, such as BERT and GPT-2, have used training data that contains problematic stereotypes, which further promotes these harmful biases. With no industry-standard evaluation metric for biases in language models, it is difficult to identify  non-biased models over biased models. This visualisation tool will aid the comparison of models and their respective bias scores/areas.
+
+
 ## 1    Motivation & Background
 
 Social bias is a very prominent flaw in our society, and despite some recent advancements such as the 'Black Lives Matter' movement, there are still people who hold socially biased views. These biases are often based on stereotypes and prejudices that are systemically maintained, and may be explicit or implicit biases, making the identification and eradication of these harmful views a difficult challenge. Social bias is not limited to a person's race, gender or ethnicity, it can also include age, religion, sexual orientation, physical abilities or even a person's weight. A report carried out by the American Civil Liberties Union shows that black people are 3.7 times more likely to be arrested for possession of marijuana than white people, even though their rate of marijuana usage was comparable [[1.1](https://www.aclu.org/files/assets/1114413-mj-report-rfs-rel1.pdf)] [[1.2](www.aclu.org/report/report-war-marijuana-black-and-white)] [[1.3](https://www.semanticscholar.org/paper/The-War-on-Marijuana-in-Black-and-White-Bunting-Garcia/cf862f2cd14a07da0df5258d17c0f138851510f6)]. This treatment of black people is explicit discrimination, but discrimination can also be implicit. The University of Virginia carried out a study in 2011 that showed women are 47% more likely to suffer severe injuries in car accidents than men, this is as a result of cars' safety features being designed for men [[2](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3222446/)]. It’s likely that this design flaw was not done with intent to put women at risk, rather it was done out of ignorance, due to the implicit bias held about men and women’s status/roles.
