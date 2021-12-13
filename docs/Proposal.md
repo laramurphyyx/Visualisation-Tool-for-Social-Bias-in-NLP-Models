@@ -14,6 +14,7 @@
 
 This project aims to highlight the presence of social biases that have been trained into language models through visualisation. Social bias is a huge issue we face as a society, and this can be a difficult behaviour/opinion to correct, as large language models, such as BERT and GPT-2, have used training data that contains problematic stereotypes, which further promotes these harmful biases. With no industry-standard evaluation metric for biases in language models, it is difficult to identify  non-biased models over biased models. This visualisation tool will aid the comparison of models and their respective bias scores/areas.
 
+This project will create visualisations to allow for easier comprehension of the types and frequency of biases that are present in a language model. This will be achieved through using existing benchmark datasets for measuring bias, such as StereoSet and CrowS-Pairs and testing against the chosen language models.
 
 ## 1    Motivation & Background
 
