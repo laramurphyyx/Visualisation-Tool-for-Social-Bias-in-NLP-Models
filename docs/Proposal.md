@@ -22,6 +22,15 @@ We interact with natural language processing regularly, possibly without even re
 
 ## 2    Problem statement
 
+As discussed in §1, the existence of biases in training data and language models can have negative effects on many individuals. Ideally, all language models should have completely unbiased and factual data for training, although this is rarely the case for large models. The social bias present in large NLP models such as BERT and GPT-2 have been criticised by many researchers, and some have even attempted to offer new, less discriminatory ways to train models or perform post-hoc bias removal. These efforts have often reduced the overall performance of the model, and are not perfect solutions to this problem. 
+
+
+As there are many language models available, making the right decision can be difficult. The model chosen will be dependent on its use and its desired performance, however, the degree of social bias contained in the model will also be a contributing factor. In order to comprehend the social bias contained in each language model, there needs to be a standard benchmark for evaluation of this bias. This information is available through publications of papers where benchmarks (such as SteroeSet or CrowS-Pairs) were introduced, however it can be difficult to fully understand the extremity/frequency of biases using just a single score. 
+
+
+The aim of this project is to create a visualisation tool to compare the performance of the language models with respect to social biases. This tool may identify specific areas of bias in the models, such as gender bias or race bias. It allows for visualisation of word embeddings and may show that certain gender-specific words have negative/positive connotations. This tool will allow for users of language models to make educated decisions and ensure that their chosen model will perform fairly and accurately.
+
+
 ## 3    State of the art
 
 ## 4    Methodology
