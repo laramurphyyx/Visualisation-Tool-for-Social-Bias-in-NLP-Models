@@ -30,16 +30,23 @@ The concept of social bias can often be subjective, there is no finite set of st
 
 ## 2    Problem statement
 
-As discussed in §1, the existence of biases in training data and language models can have negative effects on many individuals. Ideally, all language models should have completely unbiased and factual data for training, although this is rarely the case for large models. The social bias present in large NLP models such as BERT and GPT-2 have been criticised by many researchers, and some have even attempted to offer new, less discriminatory ways to train models or perform post-hoc bias removal. These efforts have often reduced the overall performance of the model, and are not perfect solutions to this problem. 
+As discussed in §1, the existence of biases in training data and language models can have negative effects on many individuals. Ideally, all language models should have completely unbiased and factual data for training, although this is rarely the case for large models. The social bias present in large, pretrained NLP models such as BERT and GPT-2 have been criticised by many researchers, and some have even attempted to offer new, less discriminatory ways to train models or perform post-hoc bias removal. These efforts have often reduced the overall performance of the model, and are not perfect solutions to this problem. 
 
 
-As there are many language models available, making the right decision can be difficult. The model chosen will be dependent on its use and its desired performance, however, the degree of social bias contained in the model will also be a contributing factor. In order to comprehend the social bias contained in each language model, there needs to be a standard benchmark for evaluation of this bias. This information is available through publications of papers where benchmarks (such as SteroeSet or CrowS-Pairs) were introduced, however it can be difficult to fully understand the extremity/frequency of biases using just a single score. 
+As there are many pretrained language models available, making the right decision can be difficult. The model chosen will be dependent on its use and its desired performance, however, the degree of social bias contained in the model will also be a contributing factor. In order to comprehend the social bias contained in each language model, there needs to be a standard benchmark for evaluation of this bias. This information is available through publications of papers where benchmarks (such as SteroeSet or CrowS-Pairs) were introduced, however it can be difficult to fully understand the extremity/frequency of biases using just a single score. 
 
 
-The aim of this project is to create a visualisation tool to compare the performance of the language models with respect to social biases. This tool may identify specific areas of bias in the models, such as gender bias or race bias. It allows for visualisation of word embeddings and may show that certain gender-specific words have negative/positive connotations. This tool will allow for users of language models to make educated decisions and ensure that their chosen model will perform fairly and accurately.
+The aim of this project is to create a visualisation tool to compare the performance of pretrained language models with respect to social biases. This tool may identify specific areas of bias in the models, such as gender bias or race bias. It allows for visualisation of word embeddings and may show that certain gender-specific words have negative/positive connotations. This tool will allow for users of language models to make educated decisions and ensure that their chosen model will perform fairly and accurately.
 
 
 ## 3    State of the art
+
+There have been numerous investigations showing that the large, pretrained language models that are commonly used in NLP tasks contain social biases. These discoveries have led researchers to propose alternative methods to create unbiased language models and benchmarks to evaluate them, although some of these benchmarks have been later criticised. We will delve deeper into the papers that will influence the direction of this project. 
+
+The work of Emily M. et al. [[5.1](https://dl.acm.org/doi/pdf/10.1145/3442188.3445922)] [[5.2](https://dl.acm.org/doi/10.1145/3442188.3445922)] has gained popularity as being the centre-piece for the dismissal of Timnit Gebru from Google. Timnit Gebru is one of the authors of this paper, which ultimately calls the reliability of Google’s BERT model, and its variants, into question. This paper challenges the model’s environmental impact and its sensitivity to social biases. This paper highlights the issues associated with using large online text corpora to train language models, and recommends creating datasets as large as can be sufficiently documented. They also note the clear distinction between natural language processing and natural language understanding, as this is a concept that is often misconstrued by both the public and researchers. LMs only perform well in tasks that can be approached by manipulating linguistic form.
+
+This paper outlines that the expected benefits of using petabytes of data will increase diversity within the data and include a broad representation of how different individuals view the world. Unfortunately, this is not the case, the data needs to be filtered, and the opinions of people who conform to a hegemonic viewpoint are more likely to be retained. This paper references work from Gehman et al. [[6.1](https://aclanthology.org/2020.findings-emnlp.301/)] [[6.2](https://arxiv.org/pdf/2009.11462.pdf)], which shows models, such as GPT-3, that are trained with at least 570GB of training data collected through Common Crawl, can generate sentences with high toxicity scores, even when prompted with non-toxic sentences. This investigation also shows that the GPT-2 model’s training data includes 272 thousand documents from unreliable news sites and 63 thousand documents from banned subreddits. Emily M. et al. also make the observation that despite the existence of the list of protected attributes in the US (attributes associated with harmful stereotypes), that this list is only applicable to the United States. Different biases and stereotypes exist in different cultures, and it can be difficult to audit for discrimination of such marginalized entities when we don’t know what these cultural-bound biases are. This paper ultimately emphasizes the necessity for more resources to be spent on the gathering and documenting of training data, using a more justice-oriented data collection methodology and ideally preventing the amplified  hegemonic views that are harmful to marginalized groups.
+
 
 ## 4    Methodology
 
@@ -78,6 +85,18 @@ The aim of this project is to create a visualisation tool to compare the perform
 
     * EasyBib: Greenwood, Shannon, et al. “Demographics of Social Media Users in 2016.” Pew Research Center: Internet, Science & Tech, Pew Research Center, 31 July 2020, www.pewresearch.org/internet/2016/11/11/social-media-update-2016/.
 
+
+5. Literature 1 - Criticism of language models
+
+    * ACM: Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, and Shmargaret Shmitchell. 2021. On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜 In <i>Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency</i> (<i>FAccT '21</i>). Association for Computing Machinery, New York, NY, USA, 610–623. DOI:https://doi.org/10.1145/3442188.3445922
+    * idk: Bender, Emily & Gebru, Timnit & McMillan-Major, Angelina & Shmitchell, Shmargaret. (2021). On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?. 610-623. 10.1145/3442188.3445922. 
+    * EasyBib: Emily M. Bender University of Washington, et al. “On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜.” On the Dangers of Stochastic Parrots | Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency, 1 Mar. 2021, dl.acm.org/doi/10.1145/3442188.3
+
+6. Toxicity Score paper
+
+    * In Paper [5]: Samuel Gehman, Suchin Gururangan, Maarten Sap, Yejin Choi, and Noah A. Smith. 2020. RealToxicityPrompts: Evaluating Neural Toxic Degeneration in Language Models. In Findings of the Association for Computational Linguistics: EMNLP 2020. Association for Computational Linguistics, Online, 3356–3369. https://doi.org/10.18653/v1/2020.findings-emnlp.301
+    * EasyBib: Gehman, Samuel, et al. “RealToxicityPrompts: Evaluating Neural Toxic Degeneration in Language Models.” ACL Anthology, aclanthology.org/2020.findings-emnlp.301/.
+    * Researchgate: Gehman, Samuel & Gururangan, Suchin & Sap, Maarten & Yejin, Choi & Smith, Noah. (2020). RealToxicityPrompts: Evaluating Neural Toxic Degeneration in Language Models. 3356-3369. 10.18653/v1/2020.findings-emnlp.301. 
 
 
 Other links: 
