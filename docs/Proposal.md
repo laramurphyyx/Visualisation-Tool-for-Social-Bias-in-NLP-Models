@@ -58,6 +58,7 @@ StereoSet is another dataset as outlined by Moin Nadeem et al. [10](https://arxi
 
 The StereoSet dataset includes examples, where examples consist of three sentences, each sentence corresponds to either a stereotypical, an anti-stereotypical, or an unrelated association. An example could be referring to a housekeeper as ‘a Mexican’, ‘an American’ or ‘a round’. The purpose of the stereotype and anti-stereotype sentences is to measure the favorability of either sentence, in an ideal language model the probability of both of these options are 50%, meaning the model exhibits no stereotypical biases. The purpose of the unrelated sentence is to evaluate language modelling ability. These examples create a Context Association Test (CAT) score for pre-trained language models. They have designed two types of association tests, intrasentence and intersentence CATs, which measure bias at sentence-level and discourse-level. A limitation identified in this paper is that the stereotypes are subjective and they may collide with objective facts. This also suggests that there are some cases where the stereotyped association may be a more likely association, creating complex implications for the CAT scores.
 
+Similarly to the StereoSet dataset, the Crowdsourced Stereotype Pairs (CrowS-Pairs) Benchmark dataset [11] is crowdsourced instead of template-based. This paper evaluates three masked language models (MLM) using the CrowS-Pairs dataset, these models are BERT, RoBERTa and ALBERT. This evaluation dataset contains 1508 examples, where each example consists of a stereotype sentence, and an anti-stereotype sentence. CrowS-Pairs includes more types of bias, there are 9 types of bias included in this dataset, and only 4 types in StereoSet. The tested MLMs use wordpiece models, which allows for links/connections to be made between orthographically similar words/tokens. This can prevent certain words from achieving a higher/lower probability based on their frequency in the training data. This research shows that BERT, being the smallest of the three models evaluated, received the lowest bias score, although it’s also the worst performing model on downstream NLP tasks. This is in-line with the concept raised in literature [5], that there are disadvantages to using too much data.
 
 
 ## 4    Methodology
@@ -134,6 +135,8 @@ The StereoSet dataset includes examples, where examples consist of three sentenc
 
     * Researchgate: Nadeem, Moin & Bethke, Anna. (2020). StereoSet: Measuring stereotypical bias in pretrained language models. 
     * https://aclanthology.org/2021.acl-long.416/
+
+11. Literature 6 - 
 
 
 Other links: 
