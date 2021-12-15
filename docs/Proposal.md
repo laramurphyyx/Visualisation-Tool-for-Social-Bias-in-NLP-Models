@@ -52,6 +52,14 @@ In the paper written by Paul Pu Lang et al., ‘Towards Understanding and Mitiga
 With these three challenges taken into consideration, Paul Pu Lang et al. propose a new benchmark that tackles each of these issues. They also make a second contribution, a post-hoc debiasing method for large LMs called Autoregressive INLP (A-INLP). They will rely on bias-sensitive tokens rather than bias-sensitive words as it has the ability to capture more nuanced/subtle biases. Their approach to mitigate bias is to learn a set of biased tokens and then mitigating these biases through their autoregressive iterative nullspace algorithm. This paper has shown that the implementation of their new benchmarks and A-INLP methods cause a tradeoff between performance and fairness. Another limitation is that there is more time and resources required during the preprocessing phase, although it achieved a similar inference run time as GPT-2 meaning deployment is feasible.
 
 
+There have been two approaches to measure bias in coreference resolution systems, WinoBias [8]https://aclanthology.org/N18-2003.pdf) and WinoGender [9](https://arxiv.org/abs/1804.09301). [expand]
+
+StereoSet is another dataset as outlined by Moin Nadeem et al. [10](https://arxiv.org/pdf/2004.09456.pdf) to measure social bias in a pretrained language model. StereoSet measures four domains of biases: gender, profession, race and religion, and has been crowdsourced using Amazon Mechanical Turk, where crowdworkers are based solely in the United States. This paper uses the dataset to measure the level of bias contained in the BERT, GPT-2, RoBERTa and XLNet language models. Prior to this research, language models were evaluated using a small set of artificially constructed bias-assessing sentences, however, this paper will perform this evaluation using StereoSet, a large-scale natural dataset.
+
+The StereoSet dataset includes examples, where examples consist of three sentences, each sentence corresponds to either a stereotypical, an anti-stereotypical, or an unrelated association. An example could be referring to a housekeeper as ‘a Mexican’, ‘an American’ or ‘a round’. The purpose of the stereotype and anti-stereotype sentences is to measure the favorability of either sentence, in an ideal language model the probability of both of these options are 50%, meaning the model exhibits no stereotypical biases. The purpose of the unrelated sentence is to evaluate language modelling ability. These examples create a Context Association Test (CAT) score for pre-trained language models. They have designed two types of association tests, intrasentence and intersentence CATs, which measure bias at sentence-level and discourse-level. A limitation identified in this paper is that the stereotypes are subjective and they may collide with objective facts. This also suggests that there are some cases where the stereotyped association may be a more likely association, creating complex implications for the CAT scores.
+
+
+
 ## 4    Methodology
 
 ## 5    Project plan
@@ -109,6 +117,23 @@ With these three challenges taken into consideration, Paul Pu Lang et al. propos
     * APA: Liang, P.P., Wu, C., Morency, L., & Salakhutdinov, R. (2021). Towards Understanding and Mitigating Social Biases in Language Models. ICML.
     * Chicago: Liang, Paul Pu, Chiyu Wu, Louis-Philippe Morency and Ruslan Salakhutdinov. “Towards Understanding and Mitigating Social Biases in Language Models.” ICML (2021).
     * EasyBib: Liang, Paul Pu, et al. “[PDF] Towards Understanding and Mitigating Social Biases in Language Models: Semantic Scholar.” Undefined, 1 Jan. 1970, www.semanticscholar.org/paper/Towards-Understanding-and-Mitigating-Social-Biases-Liang-Wu/114aa720872462b0ca1b97bfdec0ebd56c36fd0a.
+
+
+8. Literature 3 - WinoBias
+
+    * In WinoGender paper: Jieyu Zhao, Tianlu Wang, Mark Yatskar, Vicente Ordonez, and Kai-Wei Chang. 2018. Gender bias in coreference resolution: Evaluation and debiasing methods. In Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, New Orleans, Louisiana. Association for Computational Linguistics.
+    * In CrowS-Pairs paper: Jieyu Zhao, Tianlu Wang, Mark Yatskar, Vicente Ordonez, and Kai-Wei Chang. 2018. Gender bias in coreference resolution: Evaluation and debiasing methods. In Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 2 (Short Papers), pages 15–20, New Orleans, Louisiana. Association for Computational Linguistics.
+
+
+9. Literature 4 - WinoGender
+
+    * Researchgate: Rudinger, Rachel & Naradowsky, Jason & Leonard, Brian & Durme, Benjamin. (2018). Gender Bias in Coreference Resolution. 
+    * https://aclanthology.org/N18-2002/
+
+10. Literature 5 - StereoSet
+
+    * Researchgate: Nadeem, Moin & Bethke, Anna. (2020). StereoSet: Measuring stereotypical bias in pretrained language models. 
+    * https://aclanthology.org/2021.acl-long.416/
 
 
 Other links: 
