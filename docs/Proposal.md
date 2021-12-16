@@ -71,6 +71,12 @@ This project will be a visualisation tool to showcase the social bias present in
 The coding involved in this project will be primarily focused on the usage and analysis of different language models, such as BERT or GPT-2, and also on creating interactive visualisations. Specifically, I will be importing the social bias benchmark dataset, CrowS-Pairs [], to reproduce the findings as stated by Nangia et al. by testing them on BERT. With these findings reproduced, we can continue to test other models against the CrowS-Pairs benchmark dataset. Running this dataset through each model will give bias scores for each domain of bias contained in the dataset. These biases will be compared with other language models, and subsequently visualised. The visualisations will be produced using the python packages mentioned above, and may be interactive depending on the content/type of chart required.
 
 
+### 4.2     Source of Data & Experiments
+
+The data that will be used for this project is the CrowS-Pairs dataset, an open-source benchmark dataset used to measure and evaluate social bias in language models. This data is available on GitHub, and is in CSV format. The data contains 1,508 example sentence pairs where each pair includes a sentence with stereotype associations and and a sentence with anti-stereotype associations. The nine bias domains outlined in this dataset are: race, gender/gender identity, sexual orientation, religion, age, nationality, disability, physical appearance, and socioeconomic status. As Blodgett et al. have outlined, there are 29 examples within the CrowS-Pairs dataset that are considered invalid and are not good indicators of social bias. These examples have not been made publicly available, and as these examples represent less than 2% of the dataset, I have decided to continue using this dataset without making any adjustments.
+
+There are several experiments I can carry out with this dataset. My first experiment is to run the test sentences on each language model and to explore the suitable visualizations that would portray the data the clearest. A second experiment that I can perform with this dataset is to test it against the BERT model in isolation. The BERT model has several domain-specific variations, such as BioBERT, SciBERT and FinBERT, which are pretrained Biomedical, Scientific and Financial text mining respectively [ , , ]. These models do not completely re-train BERT, as this is too computationally and financially expensive, they do, however, initialise the model with learned weights from BERT-base, and subsequently train it on domain-specific texts. This experiment will show if there are any significant positive/negative differences in the bias score for each bias domain. 
+
 ## 5    Project plan
 
 ## 6    References
@@ -158,7 +164,23 @@ The coding involved in this project will be primarily focused on the usage and a
     * APA: Blodgett, S.L., Lopez, G., Olteanu, A., Sim, R., & Wallach, H.M. (2021). Stereotyping Norwegian Salmon: An Inventory of Pitfalls in Fairness Benchmark Datasets. ACL/IJCNLP.
     * Chicago: Blodgett, Su Lin, Gilsinia Lopez, Alexandra Olteanu, Robert Sim and Hanna M. Wallach. “Stereotyping Norwegian Salmon: An Inventory of Pitfalls in Fairness Benchmark Datasets.” ACL/IJCNLP (2021).
 
+13. SciBERT
 
+    * MLA: Beltagy, Iz et al. “SciBERT: A Pretrained Language Model for Scientific Text.” EMNLP (2019).
+    * APA: Beltagy, I., Lo, K., & Cohan, A. (2019). SciBERT: A Pretrained Language Model for Scientific Text. EMNLP.
+    * Chicago: Beltagy, Iz, Kyle Lo and Arman Cohan. “SciBERT: A Pretrained Language Model for Scientific Text.” EMNLP (2019).
+
+14. BioBERT
+
+    * MLA: Lee, Jinhyuk et al. “BioBERT: a pre-trained biomedical language representation model for biomedical text mining.” Bioinformatics 36 (2020): 1234 - 1240.
+    * APA: Lee, J., Yoon, W., Kim, S., Kim, D., Kim, S., So, C.H., & Kang, J. (2020). BioBERT: a pre-trained biomedical language representation model for biomedical text mining. Bioinformatics, 36, 1234 - 1240.
+    * Chiacgo: Lee, Jinhyuk, Wonjin Yoon, Sungdong Kim, Donghyeon Kim, Sunkyu Kim, Chan Ho So and Jaewoo Kang. “BioBERT: a pre-trained biomedical language representation model for biomedical text mining.” Bioinformatics 36 (2020): 1234 - 1240.
+
+15. FinBERT
+
+    * MLA: Liu, Zhuang et al. “FinBERT: A Pre-trained Financial Language Representation Model for Financial Text Mining.” IJCAI (2020).
+    * APA: Liu, Z., Huang, D., Huang, K., Li, Z., & Zhao, J. (2020). FinBERT: A Pre-trained Financial Language Representation Model for Financial Text Mining. IJCAI.
+    * Chicago: Liu, Zhuang, Degen Huang, Kaiyu Huang, Zhuang Li and Jun Zhao. “FinBERT: A Pre-trained Financial Language Representation Model for Financial Text Mining.” IJCAI (2020).
 
 Other links: 
 
