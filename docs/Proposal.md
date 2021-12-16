@@ -64,6 +64,13 @@ While the introduction of benchmark datasets to evaluate the performance of a la
 
 ## 4    Methodology
 
+### 4.1     Programming Environment & Development
+
+This project will be a visualisation tool to showcase the social bias present in natural language models. I have chosen to develop my project using Jupyter Notebook. This technology is a popular data science Interactive Development Environment (IDE) as it is easy to use and communicate/interpret results. Jupyter Notebook allows for easy execution of code to allow for quick debugging/testing. Python development is supported by Jupyter Notebooks and is one of their core languages. By using python, we have access to a vast amount of libraries and packages. This project will likely utilise python libraries such as Matplotlib, Seaborn, Plotly, Bokeh or Pygal for the visualization aspect, and will use the Huggingface Transformer Models from the PyTorch module to import and run the language models. I will be using GitLab for version control and aim to make regular commits to track progress.
+
+The coding involved in this project will be primarily focused on the usage and analysis of different language models, such as BERT or GPT-2, and also on creating interactive visualisations. Specifically, I will be importing the social bias benchmark dataset, CrowS-Pairs [], to reproduce the findings as stated by Nangia et al. by testing them on BERT. With these findings reproduced, we can continue to test other models against the CrowS-Pairs benchmark dataset. Running this dataset through each model will give bias scores for each domain of bias contained in the dataset. These biases will be compared with other language models, and subsequently visualised. The visualisations will be produced using the python packages mentioned above, and may be interactive depending on the content/type of chart required.
+
+
 ## 5    Project plan
 
 ## 6    References
@@ -105,6 +112,7 @@ While the introduction of benchmark datasets to evaluate the performance of a la
     * ACM: Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, and Shmargaret Shmitchell. 2021. On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜 In <i>Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency</i> (<i>FAccT '21</i>). Association for Computing Machinery, New York, NY, USA, 610–623. DOI:https://doi.org/10.1145/3442188.3445922
     * idk: Bender, Emily & Gebru, Timnit & McMillan-Major, Angelina & Shmitchell, Shmargaret. (2021). On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?. 610-623. 10.1145/3442188.3445922. 
     * EasyBib: Emily M. Bender University of Washington, et al. “On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜.” On the Dangers of Stochastic Parrots | Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency, 1 Mar. 2021, dl.acm.org/doi/10.1145/3442188.3
+    * link that might include apa reference: https://www.google.com/url?client=internal-element-cse&cx=000299513257099441687:fkkgoogvtaw&q=https://www.aclweb.org/anthology/2021.teachingnlp-1.17.pdf&sa=U&ved=2ahUKEwjR1dnrkOn0AhWBUcAKHVQ_AYQQFnoECAUQAQ&usg=AOvVaw14BXxwg8yxGZ8Q_23e9U8d
 
 6. Toxicity Score paper
 
