@@ -77,6 +77,13 @@ The data that will be used for this project is the CrowS-Pairs dataset, an open-
 
 There are several experiments I can carry out with this dataset. My first experiment is to run the test sentences on each language model and to explore the suitable visualizations that would portray the data the clearest. A second experiment that I can perform with this dataset is to test it against the BERT model in isolation. The BERT model has several domain-specific variations, such as BioBERT, SciBERT and FinBERT, which are pretrained Biomedical, Scientific and Financial text mining respectively [ , , ]. These models do not completely re-train BERT, as this is too computationally and financially expensive, they do, however, initialise the model with learned weights from BERT-base, and subsequently train it on domain-specific texts. This experiment will show if there are any significant positive/negative differences in the bias score for each bias domain. 
 
+### 4.3     Desired Result & Evaluation
+
+The final result of this project will be a collection of interactive visualisations representing the level of social bias present in a selected set of language models. Each visualisation will be interactive with hover functionality. There are two stretch-goals in this project, the first goal is to improve the interactive functionality associated with each visualisation by allowing a drill-down option. This can allow users to identify specific examples of where their chosen models have performed weakly, and to ensure that our findings are reliable and transparent. The second stretch goal is to compile these visualisations into a web application, to allow for this information to be easily accessible and comprehensible to the public.
+
+With many of the bias scores of models already validated and published, it is unnecessary to evaluate the performance of the language models against the test dataset. The findings as shown in [] will be reproduced to ensure that the models and training data are being used correctly, and to ensure that bias scores given to unseen models are accurate. The next evaluation to be performed will be based on the visualisations. I intend to carry out a user study to receive feedback regarding the effectiveness and clarity of the charts, and use this feedback as a metric to evaluate the performance of these visualisations. 
+
+
 ## 5    Project plan
 
 ## 6    References
