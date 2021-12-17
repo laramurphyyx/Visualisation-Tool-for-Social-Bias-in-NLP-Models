@@ -86,6 +86,38 @@ With many of the bias scores of models already validated and published, it is un
 
 ## 5    Project plan
 
+While there are some parts of the project plan that may experience minor changes as the project progresses, there is an initial guideline for the tasks to be completed and their intended timeframe. They are as follows:
+
+1. Research / Exploratory Analysis
+    * Read existing literature in related NLP areas
+    * Investigate the most suitable charts/graphs for the data produced
+    * Investigate the most suitable python packages for each visualisation
+
+2. Writing the Code
+    * Import the datasets
+    * Import the models
+    * Evaluating performance of test set for each model
+    * Creating visualisations 
+
+3. Testing the Code
+    * Replication of Results in Papers
+    * Creating Assertions
+
+4. Evaluation of Visualisations
+    * Ethics Form
+    * Conducting User Survey
+    * Interpreting & Analysing Results of Survey
+
+5. Stretch Goals
+    * Increased Functionality for Visualisations
+    * Creating Web app
+
+6. Final Report
+
+![Gantt Chart for Project Timeline](gantt_chart.png)
+
+The gantt chart above shows the preliminary timeline of tasks to be completed. The plan is designed to allow for most work to be completed by weeks 10-12, to accommodate for other assignments that may be due during this period.
+
 ## 6    References
 
 1. UCLA Report - Racial discrimination for marijuana related crimes
