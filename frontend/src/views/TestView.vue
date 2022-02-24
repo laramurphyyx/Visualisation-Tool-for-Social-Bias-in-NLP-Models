@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1>TEST</h1>
+    <v-container
+      ><v-card class="mx-auto" width="18vh">TEST</v-card></v-container
+    >
   </div>
 </template>
 
