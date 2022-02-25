@@ -1,2 +1,8 @@
+# Directories
 /.ipynb_checkpoints
 __pycache__
+
+# Datasets
+bert.vocab
+crows_pairs_anonymized.csv
+fixed_data.csv
