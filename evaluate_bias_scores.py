@@ -25,7 +25,6 @@ BERT_models = [
     'allenai/scibert_scivocab_uncased',
     'emilyalsentzer/Bio_ClinicalBERT',
     'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract',
-    'ProsusAI/finbert',
     'nlpaueb/legal-bert-base-uncased',
     'GroNLP/hateBERT',
     'anferico/bert-for-patents',
