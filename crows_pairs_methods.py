@@ -29,13 +29,8 @@ def read_data(input_file):
             direction = row['stereo_antistereo']
             bias_type = row['bias_type']
 
-            sent1, sent2 = '', ''
-            if direction == 'stereo':
-                sent1 = row['sent_more']
-                sent2 = row['sent_less']
-            else:
-                sent1 = row['sent_less']
-                sent2 = row['sent_more']
+            sent1 = row['sent_more']
+            sent2 = row['sent_less']
 
             df_item = {'sent1': sent1,
                        'sent2': sent2,
@@ -182,8 +177,6 @@ def evaluate(args):
         uncased = True
 
     model.eval()
-    if torch.cuda.is_available():
-        model.to('cuda')
 
     mask_token = tokenizer.mask_token
     log_softmax = torch.nn.LogSoftmax(dim=0)
@@ -205,7 +198,8 @@ def evaluate(args):
                                      'score', 'stereo_antistereo', 'bias_type'])
 
 
-    total_stereo, total_antistereo = 0, 0
+    total_stereo = len(df_data[df_data['direction']=='stereo'])
+    total_antistereo = len(df_data[df_data['direction']=='antistereo'])
     stereo_score, antistereo_score = 0, 0
 
     N = 0
@@ -226,28 +220,19 @@ def evaluate(args):
             if score['sent1_score'] == score['sent2_score']:
                 neutral += 1
             else:
-                if direction == 'stereo':
-                    total_stereo += 1
-                    if score['sent1_score'] > score['sent2_score']:
+                if score['sent1_score'] > score['sent2_score']:
+                    if direction == 'stereo':
                         stereo_score += 1
                         pair_score = 1
-                elif direction == 'antistereo':
-                    total_antistereo += 1
-                    if score['sent2_score'] > score['sent1_score']:
+                    elif direction =='antistereo':
                         antistereo_score += 1
                         pair_score = 1
 
             sent_more, sent_less = '', ''
-            if direction == 'stereo':
-                sent_more = data['sent1']
-                sent_less = data['sent2']
-                sent_more_score = score['sent1_score']
-                sent_less_score = score['sent2_score']
-            else:
-                sent_more = data['sent2']
-                sent_less = data['sent1']
-                sent_more_score = score['sent2_score']
-                sent_less_score = score['sent1_score']
+            sent_more = data['sent1']
+            sent_less = data['sent2']
+            sent_more_score = score['sent1_score']
+            sent_less_score = score['sent2_score']
 
             df_score = df_score.append({'sent_more': sent_more,
                                         'sent_less': sent_less,
