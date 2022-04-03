@@ -15,6 +15,60 @@ from transformers import RobertaTokenizer, RobertaForMaskedLM
 from collections import defaultdict
 from tqdm import tqdm
 
+BERT_models = [
+    'bert-base-cased',
+    'bert-base-uncased',
+    'bert-large-uncased',
+    'bert-large-cased',
+    'bert-base-multilingual-uncased',
+    'bert-base-multilingual-cased',
+    'allenai/scibert_scivocab_uncased',
+    'emilyalsentzer/Bio_ClinicalBERT',
+    'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract',
+    'nlpaueb/legal-bert-base-uncased',
+    'GroNLP/hateBERT',
+    'anferico/bert-for-patents',
+    'jackaduma/SecBERT'
+]
+
+ALBERT_models = [
+    'albert-base-v1',
+    'albert-base-v2'
+]
+
+ROBERTA_models = [
+    'roberta-base',
+    'distilroberta-base',
+    'roberta-large',
+    'huggingface/CodeBERTa-small-v1',
+    'climatebert/distilroberta-base-climate-f'
+]
+
+all_models = BERT_models + ALBERT_models + ROBERTA_models + ['xlm-roberta-base', 'distilbert-base-multilingual-cased']
+
+uncased_dict = {'bert-base-cased' : False,
+ 'bert-base-uncased' : True,
+ 'bert-large-uncased' : True,
+ 'bert-large-cased' : False,
+ 'bert-base-multilingual-uncased' : True,
+ 'bert-base-multilingual-cased' : False,
+ 'allenai/scibert_scivocab_uncased' : True,
+ 'emilyalsentzer/Bio_ClinicalBERT' : False,
+ 'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract' : True,
+ 'nlpaueb/legal-bert-base-uncased' : True,
+ 'GroNLP/hateBERT' : True,
+ 'anferico/bert-for-patents' : True, #assumed
+ 'jackaduma/SecBERT' : True, #assumed
+ 'albert-base-v1' : True, #assumed
+ 'albert-base-v2' : True, #assumed
+ 'roberta-base' : True, #assumed
+ 'distilroberta-base' : True, #assumed
+ 'roberta-large' : True, #assumed
+ 'huggingface/CodeBERTa-small-v1' : True, #assumed
+ 'climatebert/distilroberta-base-climate-f' : True, #assumed
+ 'xlm-roberta-base' : True, #assumed
+ 'distilbert-base-multilingual-cased' : False}
+
 def read_data(input_file):
     """
     Load data into pandas DataFrame format.
@@ -159,29 +213,38 @@ def evaluate(args):
 
     logging.basicConfig(level=logging.INFO)
 
+    model_name = args.lm_model
+
+    # supported masked language models (using bert)
+    if model_name in BERT_models:
+        tokenizer = BertTokenizer.from_pretrained(model_name)
+        model = BertForMaskedLM.from_pretrained(model_name)
+    elif model_name in ALBERT_models:
+        tokenizer = AlbertTokenizer.from_pretrained(model_name)
+        model = AlbertForMaskedLM.from_pretrained(model_name)
+    elif model_name in ROBERTA_models:
+        tokenizer = RobertaTokenizer.from_pretrained(model_name)
+        model = RobertaForMaskedLM.from_pretrained(model_name)
+    elif model_name == 'xlm-roberta-base':
+        tokenizer = XLMRobertaTokenizer.from_pretrained(model_name)
+        model = XLMRobertaForMaskedLM.from_pretrained(model_name)
+    elif model_name == 'distilbert-base-multilingual-cased':
+        tokenizer = DistilBertTokenizer.from_pretrained(model_name)
+        model = DistilBertForMaskedLM.from_pretrained(model_name)
+    else:
+        raise ValueError("Model name not in " + str(all_models))
+
+    uncased = uncased_dict[model_name]
+
     # load data into panda DataFrame
     df_data = read_data(args.input_file)
-
-    # supported masked language models
-    if args.lm_model == "bert":
-        tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-        model = BertForMaskedLM.from_pretrained('bert-base-uncased')
-        uncased = True
-    elif args.lm_model == "roberta":
-        tokenizer = RobertaTokenizer.from_pretrained('roberta-large')
-        model = RobertaForMaskedLM.from_pretrained('roberta-large')
-        uncased = False
-    elif args.lm_model == "albert":
-        tokenizer = AlbertTokenizer.from_pretrained('albert-xxlarge-v2')
-        model = AlbertForMaskedLM.from_pretrained('albert-xxlarge-v2')
-        uncased = True
 
     model.eval()
 
     mask_token = tokenizer.mask_token
     log_softmax = torch.nn.LogSoftmax(dim=0)
     vocab = tokenizer.get_vocab()
-    with open(args.lm_model + ".vocab", "w") as f:
+    with open("lm_model.vocab", "w") as f:
         f.write(json.dumps(vocab))
 
     lm = {"model": model,
@@ -195,7 +258,7 @@ def evaluate(args):
     # each row in the dataframe has the sentid and score for pro and anti stereo.
     df_score = pd.DataFrame(columns=['sent_more', 'sent_less', 
                                      'sent_more_score', 'sent_less_score',
-                                     'score', 'stereo_antistereo', 'bias_type'])
+                                     'score', 'stereo_antistereo', 'bias_type'], dtype=object)
 
 
     total_stereo = len(df_data[df_data['direction']=='stereo'])
