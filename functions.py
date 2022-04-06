@@ -1,72 +1,14 @@
 import pandas as pd
 import numpy as np
+from variables import *
 
-bias_types =  [
-    'race-color',
-    'gender',
-    'socioeconomic',
-    'nationality',
-    'religion', 
-    'age',
-    'sexual-orientation',
-    'physical-appearance',
-    'disability'
-]
+def get_variable_model_name(model_name):
+	variable_model_name = model_name.split('/')[-1]
+	variable_model_name = variable_model_name.replace('-', '_')
+	return variable_model_name
 
-all_models = [
-    'bert-base-cased',
-    'bert-base-uncased',
-    'bert-large-uncased',
-    'bert-large-cased',
-    'bert-base-multilingual-uncased',
-    'bert-base-multilingual-cased',
-    'allenai/scibert_scivocab_uncased',
-    'emilyalsentzer/Bio_ClinicalBERT',
-    'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract',
-    'ProsusAI/finbert',
-    'nlpaueb/legal-bert-base-uncased',
-    'GroNLP/hateBERT',
-    'anferico/bert-for-patents',
-    'jackaduma/SecBERT',
-    'albert-base-v1',
-    'albert-base-v2',
-    'roberta-base',
-    'distilroberta-base',
-    'roberta-large',
-    'huggingface/CodeBERTa-small-v1',
-    'climatebert/distilroberta-base-climate-f',
-    'xlm-roberta-base', 
-    'distilbert-base-multilingual-cased']
-
-display_model_names = {
-    'bert-base-cased' : 'BERT Base (cased)',
-    'bert-base-uncased' : 'BERT Base (uncased)',
-    'bert-large-uncased' : 'BERT Large (uncased)',
-    'bert-large-cased' : 'BERT Large (cased)',
-    'bert-base-multilingual-uncased' : 'Multilingual BERT (uncased)',
-    'bert-base-multilingual-cased' : 'Multilingual BERT (cased)',
-    'allenai/scibert_scivocab_uncased' : 'SciBERT',
-    'emilyalsentzer/Bio_ClinicalBERT' : 'Bio + Clinical BERT',
-    'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract' : 'PubMed BERT',
-    'nlpaueb/legal-bert-base-uncased' : 'Legal BERT',
-    'GroNLP/hateBERT' : 'Hate BERT',
-    'anferico/bert-for-patents' : 'BERT for Patents',
-    'jackaduma/SecBERT' : 'Security BERT',
-    'albert-base-v1' : 'AlBERT (v1)',
-    'albert-base-v2' : 'AlBERT (v2)',
-    'roberta-base' : 'RoBERTa Base',
-    'distilroberta-base' : 'Distilled RoBERTa Base',
-    'roberta-large' : 'RoBERTa Large',
-    'huggingface/CodeBERTa-small-v1' : 'Code RoBERTa',
-    'climatebert/distilroberta-base-climate-f' : 'Climate RoBERTa Base (distilled)',
-    'xlm-roberta-base' : 'Multilingual RoBERTa', 
-    'distilbert-base-multilingual-cased' : 'Distilled Multilingual BERT (cased)'}
-
-variable_model_names = {}
-for model in all_models:
-    model_name = model.split('/')[-1]
-    model_name = model_name.replace('-', '_')
-    variable_model_names[model_name] = model
+def get_model_file_name(model_name):
+	return model_name.split('/')[-1]
 
 def calculate_all_scores(dataframe, threshold=0):
 
