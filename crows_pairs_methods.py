@@ -284,12 +284,11 @@ def evaluate(args):
                 neutral += 1
             else:
                 if score['sent1_score'] > score['sent2_score']:
+                    pair_score = 1
                     if direction == 'stereo':
                         stereo_score += 1
-                        pair_score = 1
                     elif direction =='antistereo':
                         antistereo_score += 1
-                        pair_score = 1
 
             sent_more, sent_less = '', ''
             sent_more = data['sent1']
