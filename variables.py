@@ -65,6 +65,29 @@ display_model_names = {
     'xlm-roberta-base' : 'Multilingual RoBERTa', 
     'distilbert-base-multilingual-cased' : 'Distilled Multilingual BERT (cased)'}
 
+uncased_dict = {'bert-base-cased' : False,
+ 'bert-base-uncased' : True,
+ 'bert-large-uncased' : True,
+ 'bert-large-cased' : False,
+ 'bert-base-multilingual-uncased' : True,
+ 'bert-base-multilingual-cased' : False,
+ 'allenai/scibert_scivocab_uncased' : True,
+ 'emilyalsentzer/Bio_ClinicalBERT' : False,
+ 'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract' : True,
+ 'nlpaueb/legal-bert-base-uncased' : True,
+ 'GroNLP/hateBERT' : True,
+ 'anferico/bert-for-patents' : True, #assumed
+ 'jackaduma/SecBERT' : True, #assumed
+ 'albert-base-v1' : True, #assumed
+ 'albert-base-v2' : True, #assumed
+ 'roberta-base' : True, #assumed
+ 'distilroberta-base' : True, #assumed
+ 'roberta-large' : True, #assumed
+ 'huggingface/CodeBERTa-small-v1' : True, #assumed
+ 'climatebert/distilroberta-base-climate-f' : True, #assumed
+ 'xlm-roberta-base' : True, #assumed
+ 'distilbert-base-multilingual-cased' : False}
+
 monthly_downloads = {
 'bert-base-cased': 12170673,
 'bert-base-uncased': 4092371,
