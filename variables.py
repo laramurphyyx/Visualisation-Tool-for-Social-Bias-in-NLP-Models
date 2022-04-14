@@ -113,6 +113,14 @@ monthly_downloads = {
 'distilbert-base-multilingual-cased': 603
 }
 
+score_types = [
+'neutral_score',
+'bias_score', 
+'nonbias_score', 
+'stereotype_score', 
+'antistereotype_score'
+]
+
 # Creating lists containing the IDs for all sentence pairs that have been updated in iteration 1 and 2
 errors_sentence_structure_ids = [
     14, 15, 21, 30, 47, 55, 62, 87, 89, 95, 116, 120, 125, 126, 135, 138, 145, 152, 161, 179, 
