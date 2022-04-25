@@ -65,6 +65,26 @@ display_model_names = {
     'xlm-roberta-base' : 'Multilingual RoBERTa', 
     'distilbert-base-multilingual-cased' : 'Distilled Multilingual BERT (cased)'}
 
+display_bias_types = {
+    'race-color': 'Race/Colour',
+    'gender': 'Gender',
+    'socioeconomic': 'Socioeconomic Status',
+    'nationality': 'Nationality',
+    'religion': 'Religion', 
+    'age': 'Age',
+    'sexual-orientation': 'Sexual Orientation',
+    'physical-appearance': 'Physical Appearance',
+    'disability': 'Disability'
+}
+
+display_score_types = {
+    'neutral_score' : 'Neutral Score',
+    'bias_score' : 'Bias Score',
+    'nonbias_score' : 'Non-Bias Score',
+    'stereotype_score' : 'Stereotype Score',
+    'antistereotype_score' : 'Antistereotype Score'
+}
+
 uncased_dict = {'bert-base-cased' : False,
  'bert-base-uncased' : True,
  'bert-large-uncased' : True,
