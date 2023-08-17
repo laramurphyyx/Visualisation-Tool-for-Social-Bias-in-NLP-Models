@@ -1,6 +1,9 @@
 # Directories
 /.ipynb_checkpoints
 __pycache__
+BERT Classifier/.ipynb_checkpoints/
+Archive/.ipynb_checkpoints
+frontend/__pycache__
 
 # Datasets
 bert.vocab

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head></head>
+<body style="font-family:arial, sans-serif">
+    <h1>
+        Visualisation Tool for Social Bias in NLP Models
+    </h1>
+
+    <p style="width: 1000px; padding: 10px; border: 2px solid #ffcccb;">
+        The charts below show the results achieved by 22 BERT-based language models when tested against an adjusted version of the CrowS-Pairs benchmark dataset. <br><br>
+        The methodology used by CrowS-Pairs is to identify whether a language model is biassed by checking if the probability assigned to a stereotyped sentence is higher than the probability of a non-stereotyped sentence.
+    </p>
+    The following metrics are used throughout the charts:
+    <ul style="list-style-position:inside; width:1000px">
+        <li><b>Neutral Score:</b> This represents the neutrality of the model. This score measures the percentage of sentence pairs where the probabilities assigned to both sentences were within a specified threshold of eachother. </li>
+        <li><b>Bias Score:</b> This represents how biassed a model is towards stereotypes. This score measures the percentage of sentence pairs where the probability assigned to the stereotyped sentence is higher than the probability of the sentence without a stereotype, above a specified threshold. </li>
+        <li><b>Non-Bias Score:</b> This represents how biassed a model is towards sentences that aren't stereotypes. This is calculated as the percentage of sentence pairs where the probability assigned to the non-stereotyped sentence is greater than the probability of the stereotyped sentence, above a certain threshold.</li>
+    </ul>
+
+
+    <p>
+        There are different types of charts available below. <br>
+        Click the 'RUN' button for any visualisation you would like to see.<br>
+        <b>Note:</b> Customisable inputs are not yet available.
+    </p>
+
+    <h2>Chart 1: Grouped Bar Chart</h2>
+    <p>
+        A grouped bar chart where you can select multiple models across multiple scores at a specified threshold. <br><br>
+        <u>Default values</u> for this chart:<br>
+        <i> - List of Models</i>: All 22 models<br>
+        <i> - List of Scores</i>: Neutral, Bias and Non-Bias Scores<br>
+        <i> - Threshold</i>: 5%
+    </p>
+    <p><a href="chart1">Run here</a></p>
+
+    <h2>Stacked Bar Chart</h2>
+    <p>
+        A stacked bar chart where you can select multiple models, and view the stacked bar chart for the Bias, Nonbias and Neutral scores at a specified threshold. <br><br>
+        <u>Default values</u> for this chart:<br>
+        <i> - List of Models</i>: All 22 models<br>
+        <i> - Threshold</i>: 5%
+    </p>
+    <p><a href="chart2">Run here</a></p>
+
+    <h2>Bar Chart with Slider Functionality</h2>
+    <p>A bar chart where you can select multiple models, and a score type to be analysed across all thresholds (customisable through the slider).</p>
+    <p>
+        Note: If you choose all models at a 1% step size, it can take ~5 minutes to load.<br><br>
+        <u>Default values</u> for this chart:<br>
+        <i> - List of Models</i>: All 22 models<br>
+        <i> - Score Type</i>: Neutral<br>
+    </p>
+    <p><a href="chart3">Run here</a></p>
+
+    <h2>Radar Chart to Compare Models</h2>
+    <p>
+        A radar chart to compare multiple models on a specified score type and threshold.<br><br>
+        <u>Default values</u> for this chart:<br>
+        <i> - List of Models</i>: BERT base (uncased), ALBERT base v2 and RoBERTa Base <br>
+        <i> - Score Type</i>: Neutral<br>
+        <i> - Threshold</i>: 5%
+    </p>
+    <p><a href="chart4">Run here</a></p>
+
+    <h2>Radar Chart to Compare Scores</h2>
+    <p>
+        A radar chart to compare one model on multiple score types with a specified threshold. <br><br>
+        <u>Default values</u> for this chart:<br>
+        <i> - Model</i>: BERT base (uncased)<br>
+        <i> - List of Scores</i>: Neutral, Bias and Non-Bias Scores<br>
+        <i> - Threshold</i>: 5%
+
+    </p>
+    <p><a href="chart5">Run here</a></p>
+
+    <h2>Radar Chart to Compare Thresholds</h2>
+    <p>
+        A radar chart to compare one model on one score types over several thresholds.<br><br>
+        <u>Default values</u> for this chart:<br>
+        <i> - Model</i>: BERT base (uncased)<br>
+        <i> - Score Type</i>: Neutral<br>
+        <i> - List of Thresholds</i>: [0%, 1%, 2% ... 8%, 9%]
+    </p>
+    <p><a href="chart6">Run here</a></p>
+
+</body>
+
+</html>

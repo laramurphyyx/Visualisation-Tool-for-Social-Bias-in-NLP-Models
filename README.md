@@ -1,34 +1,39 @@
-# CA4021 template repo
+# CA4021: Visualisation Tool for Social Bias in NLP Models
 
-*You should replace all of this file with a README describing your own project.*
+## Project Description
 
-This is a template for CA4021 Data Science projects.
+This project aims to highlight the presence of social biases that have been trained into language models through visualisation. 
 
-The project dashboard is [here](https://projects.computing.dcu.ie/project.html?module=ca4021).
+This project improved the quality and reliability of an existing social bias benchmark dataset, [CrowS-Pairs](https://github.com/nyu-mll/crows-pairs). This was done in three iterations, the first two iterations focussed on correcting sentences with incorrect structure or spelling errors, and the third iteration dealt with inconsistent punctuation. From the first two iterations, a total of 425 sentences were manually verified and 144 of them were updated.
 
+The methods of improving the data collection process for training language models were also explored. This project has used the updated version of the CrowS-Pairs dataset to train a BERT binary classifier to identify stereotyped and non-stereotyped sentences. This identifier achieved an overall accuracy of 75%, although only received a 'true' accuracy of 57% (more info in the notebook '[Fine_Tuning_BERT_on_Stereotyped_data](https://gitlab.computing.dcu.ie/murpl239/2022-ca4021-murpl239/-/blob/master/BERT%20Classifier/Fine_Tuning_BERT_on_Stereotyped_data.ipynb)'). 
 
-## 1. Create your repo
+This project also introduces a more efficient metric, a neutrality metric, to measure how fair a language model is. Originally, CrowS-Pairs had only measured a 'metric_score', which represented the proportion of sentence pairs where the model assigned a higher probability to the sentence pair. This score could not differentiate between sentence pairs with a large difference in probabilities and pairs with almost identical probabilities. By introducing a threshold, a neutrality score can be measured. The threshold assigns a value to how different the probabilities of two sentences have to be before it is considered biased or not biased. This threshold can be any value from 0-1.
 
-Create your own fork of this repo.
+Using the updated dataset as our test set, and our new neutrality metric, visualisations are created and made available on the front end. The visualisations include various types of bar charts and radar charts, produced using a Python package, Plotly. This package allows for visualisations to be interactive, and can be integrated seamlessly using Flask, a web framework.
 
-## 2. Name your repo appropriately
+## Repository Structure
 
-The name of your *repo* must match the pattern `2022-ca4021-XXXXXX`, where `XXXXXX` can be any text of your choice (such as your username).
+The repository is structured as follows:
 
-**Note** that the year should be set as appropriate to your year of study. For example, in the 2022/2023 academic year this would change to '2023-ca4021-slittle'), in the 2023/2024 academic year this would change to '2024-ca4021-slittle'), etc.
+<u>Directories:</u>
+* [All Output Files](All%20Output%20Files): This directory contains three sub-directories. Each sub-directory corresponds to the results obtained on all 22 language models using the original CrowS-Pairs dataset, the updated version after iteration 1, and the final updated version of the dataset. It also contains the master file used to compute all visualisations in real-time.
+* [Archive](Archive): This directory contains various notebooks that have been used throughout the project. Some of these notebooks have been used to explore different areas, some were used to produce the output files, and some were just original copies of notebooks that have later been summarised/expanded on.
+* [BERT Classifier](BERT%20Classifier): This directory contains a notebook to manipulate the updated CrowS-Pairs dataset into a training file and a testing file (also contained in this directory). There is also a notebook that fine-tunes BERT and contains the accuracy and short analysis on performance.
+* [Front End](Front%20End): This is the directory containing the files required to run the front end. The front end can be created by cloning this repo, and running 'python -m flask run' in the terminal in this directory (Note: this requires the [master output file](https://gitlab.computing.dcu.ie/murpl239/2022-ca4021-murpl239/-/blob/master/All%20Output%20Files/master_output_file.zip) to be unzipped and located in the parent directory).
+* [Graphics and Demos](Graphics%20and%20Demos): This directory contains images used in the report, such as diagrams and visual examples, and screenshots of the charts created. There is also two videos, one to show an interactive slider bar bar chart, and one to show a demo of the front end site.
+* [docs](docs): This folder contains the submission files for the final report and presentation. Also in this directory is the submission of the proposal and the ethics documentation.
 
-It is the *name of your repo* that matters (not the name of your project).
+<u>Notebooks:</u>
+* [Analysis - Comparison of Original and Updated Datasets](Analysis%20-%20Comparison%20of%20Original%20and%20Updated%20Datasets.ipynb): This notebook performs analyses on the effects of each iteration of cleaning on the original dataset.
+* [Analysis - Effects of Adding Thresholds](Analysis%20-%20Effects%20of%20Adding%20Thresholds.ipynb): This notebook performs analyses on the effect of adding a threshold and neutrality score (to replace the original 'metric_score').
+* [Fixing Errors in Dataset Pt. 1](Fixing%20Errors%20in%20Dataset%20Pt.%201.ipynb): This notebook goes through the first iteration of cleaning. This notebook verifies 217 sentences that have mismatched lengths, and goes into detail for each of the 63 sentence pairs that had to be updated.
+* [Fixing Errors in Dataset Pt. 2](Fixing%20Errors%20in%20Dataset%20Pt.%202.ipynb): This notebook performs the second iteration of cleaning, by identifying sentences with differing vocabulary. Through verifying the vocabulary lists, 81 of 208 identified sentences had to be updated in this notebook.
+* [Fixing Errors in Dataset Pt. 3](Fixing%20Errors%20in%20Dataset%20Pt.%203.ipynb): This notebook adds punctuation to all sentence pairs, to prevent unpredictable behaviour from language models. This is an automated process that updated 153 sentence pairs.
+* [Replicating CrowS-Pairs Results](Replicating%20CrowS-Pairs%20Results.ipynb): This notebook shows the process of replicating the CrowS-Pairs results to ensure sound usage of their methodology.
+* [Visualisations](Visualisations.ipynb): This notebook contains a series of visualisations that show the different ways the data produced can be visualised. This is an extensive list with different variations of the same chart, the charts available via the front end is a more compact series of visualisations, available through [this notebook](Front%20End/Visualisation%20Functions.ipynb)
 
-You can change the name of your repo on GitLab under:
-- Settings / General / Advanced / Change path
-
-It looks like this:
-
-![change-repo-path](repo-change-path.png "Change repo path.")
-
-## Additional resources
-
-- Repo [hygiene](https://gitlab.computing.dcu.ie/sblott/local-gitlab-documentation/blob/master/repo-hygiene.md)
-- Git [cheat sheet](https://gitlab.computing.dcu.ie/sblott/local-gitlab-documentation/blob/master/cheat-sheet.md)
-- Gitlab [CI environment](https://gitlab.computing.dcu.ie/sblott/docker-ci-environment) and it's [available software](https://gitlab.computing.dcu.ie/sblott/docker-ci-environment/blob/master/Dockerfile)
-- Possible project structure for Data Science work [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/)
+<u>Python Scripts:</u>
+* [crows_pairs_methods](crows_pairs_methods.py): This is a python script that contains all the functions required to test a language model against the test dataset.
+* [functions](functions.py): This is a python script to store various functions that can be used for various tasks throughout the project, primarily to calculate scores using the master dataset in real-time.
+* [variables](variables.py)	: This is a python script to store recurring variable names, such as model names and bias types.
